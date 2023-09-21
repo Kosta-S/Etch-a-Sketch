@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: black;
+    color:blanchedalmond;
+}
+h1 {
+    text-align: center;
+}
+
+#drawing-pad{
+    border: 10px beige solid;
+    width: 600px;
+    height: 600px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    background-color: white; /* Set the background color as needed */
+    box-sizing: border-box; /* Exclude borders from the element's size */
+}
+
+#resolution-menu {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+#setButton {
+    margin-left: 1em;
+    border: 1px solid yellow;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="range"] {
+    width: 200px;
+}
+
+#drawingSetPad {
+    display: flex;
+}
+
+#settings {
+    padding-left: 2em;
+}
+#singleColor{
+    display: flex;
+}
+
+
