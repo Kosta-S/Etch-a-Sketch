@@ -38,77 +38,74 @@ setButton.addEventListener('click', function () {
 });
 
 
+// Making a two mode drawing function: rainbow and just one color 
+
+let isDrawing = false;
+
+let currentDrawingMode = 'rainbow';
+
+let selectedColor = '#00ff00';
+
+
+drawingPad.addEventListener('mousedown', () => {
+    isDrawing = true;
+});
+
+drawingPad.addEventListener('mouseup', () => {
+    isDrawing = false;
+});
+
+
+drawingPad.addEventListener('mousemove', draw);
+
+function getRandomColor() {
+    const red = Math.floor(Math.random() * 256);    // Random value between 0 and 255
+    const green = Math.floor(Math.random() * 256);  // Random value between 0 and 255
+    const blue = Math.floor(Math.random() * 256);   // Random value between 0 and 255
+    return `rgb(${red}, ${green}, ${blue})`;        // Format as RGB color
+}
+
+const drawingModeRadios = document.querySelectorAll('input[name="drawingMode"]');
+drawingModeRadios.forEach((radio) => {
+    radio.addEventListener('change', () => {
+        currentDrawingMode = radio.value;
+    });
+});
+
+function draw(e) {
+    if (isDrawing) {
+        const square = e.target;
+        if (currentDrawingMode === 'rainbow') {
+            square.style.backgroundColor = getRandomColor();
+        } else if (currentDrawingMode === 'single-color') {
+            square.style.backgroundColor = selectedColor;
+        }
+    }
+}
+
+// Adding  the ability to choose colors for the single color mode
+
+const colorPicker = document.getElementById('colorPicker');
+
+colorPicker.addEventListener('input', () => {
+    const colorFromPicker = colorPicker.value;
+    currentDrawingMode = 'single-color';
+    selectedColor = colorFromPicker;
+});
 
 
 
 
-// function getRandomColor() {
-//     const red = Math.floor(Math.random() * 256);    // Random value between 0 and 255
-//     const green = Math.floor(Math.random() * 256);  // Random value between 0 and 255
-//     const blue = Math.floor(Math.random() * 256);   // Random value between 0 and 255
-//     return `rgb(${red}, ${green}, ${blue})`;        // Format as RGB color
-// }
 
 
 
 
-// let isDrawing = false;
-// let currentDrawingMode = 'rainbow';
-// let selectedColor = '#00ff00';
-
-// // Event listener for the color picker input
-// const colorPicker = document.getElementById('colorPicker');
-
-// colorPicker.addEventListener('input', () => {
-//     // Get the selected color from the color picker
-//     const colorFromPicker = colorPicker.value;
-
-//     // Update the drawing mode to "single-color" and set the color
-//     currentDrawingMode = 'single-color';
-//     selectedColor = colorFromPicker;
-// });
 
 
 
-// // Event listener for mouse down
-// drawingPad.addEventListener('mousedown', () => {
-//     isDrawing = true;
-// });
-
-// function draw(e) {
-//     if (currentDrawingMode === 'single-color') {
-//         const square = e.target;
-//         const squareColor = square.style.backgroundColor;
-
-
-//     if (isDrawing) {
-//         const square = e.target;
-//         if (currentDrawingMode === 'rainbow') {
-//             square.style.backgroundColor = getRandomColor();
-//         } else if (currentDrawingMode === 'single-color') {
-//             square.style.backgroundColor = selectedColor;
-//         }
-//     }
-// }
-
-
-// // Event listeners for radio buttons to change the drawing mode
-// const drawingModeRadios = document.querySelectorAll('input[name="drawingMode"]');
-// drawingModeRadios.forEach((radio) => {
-//     radio.addEventListener('change', () => {
-//         currentDrawingMode = radio.value;
-//     });
-// });
 
 
 
-// // Event listener for mouse up
-// drawingPad.addEventListener('mouseup', () => {
-//     isDrawing = false;
-// });
-
-// // Event listener for mouse move (drawing)
-// drawingPad.addEventListener('mousemove', draw);
 
 
 
