@@ -35,7 +35,8 @@ h1 {
 
 #setButton {
     margin-left: 1em;
-    border: 1px solid yellow;
+    border: 2px solid yellow;
+    padding: 0.5em;
 }
 
 label {
